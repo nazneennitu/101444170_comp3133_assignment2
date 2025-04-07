@@ -1,0 +1,37 @@
+<div class="signup-wrapper">
+  <div class="signup-container">
+    <h2 class="page-title">Create an Account</h2>
+
+    <form (ngSubmit)="onSignup()" #signupForm="ngForm" novalidate>
+      <input
+        type="text"
+        placeholder="Full Name"
+        [(ngModel)]="name"
+        name="name"
+        required
+      />
+      <input
+        type="email"
+        placeholder="Email Address"
+        [(ngModel)]="email"
+        name="email"
+        required
+      />
+      <input
+        type="password"
+        placeholder="Password"
+        [(ngModel)]="password"
+        name="password"
+        required
+      />
+      <button type="submit" [disabled]="signupForm.invalid">Sign Up</button>
+    </form>
+
+    <div class="message success" *ngIf="successMessage">
+      {{ successMessage }}
+    </div>
+    <div class="message error" *ngIf="errorMessage">
+      {{ errorMessage }}
+    </div>
+  </div>
+</div>

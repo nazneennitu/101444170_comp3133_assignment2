@@ -1,0 +1,102 @@
+<div class="employee-wrapper">
+  <div class="employee-container">
+    <h2 class="welcome">Welcome, {{ userName }}!</h2>
+    <p class="status-text">You are successfully logged in.</p>
+
+    <button class="logout-btn" (click)="logout()">Logout</button>
+
+    <hr />
+
+    <section class="upload-section">
+      <h3>Upload a File</h3>
+      <form (ngSubmit)="upload()" enctype="multipart/form-data">
+        <input type="file" (change)="onFileSelected($event)" class="file-input" />
+        <button type="submit" class="upload-btn">Upload</button>
+      </form>
+
+      <div *ngIf="uploadedFile" class="upload-info">
+        <p><strong>Uploaded:</strong> {{ uploadedFile.filename }}</p>
+        <p><strong>Type:</strong> {{ uploadedFile.mimetype }}</p>
+      </div>
+    </section>
+  </div>
+</div>
+
+<style>
+  .employee-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 60px;
+    min-height: 100vh;
+    background-color: #f9f9f9;
+  }
+
+  .employee-container {
+    background: #ffffff;
+    padding: 2rem;
+    border-radius: 12px;
+    width: 100%;
+    max-width: 480px;
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.1);
+    text-align: center;
+  }
+
+  .welcome {
+    font-size: 1.8rem;
+    margin-bottom: 0.5rem;
+    color: #333;
+  }
+
+  .status-text {
+    margin-bottom: 1rem;
+    color: #666;
+  }
+
+  .logout-btn {
+    background-color: #dc3545;
+    color: #fff;
+    border: none;
+    padding: 0.5rem 1.2rem;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 500;
+    margin-bottom: 1rem;
+  }
+
+  .logout-btn:hover {
+    background-color: #b02a37;
+  }
+
+  .upload-section {
+    text-align: left;
+    margin-top: 2rem;
+  }
+
+  .file-input {
+    margin-bottom: 1rem;
+    width: 100%;
+  }
+
+  .upload-btn {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 0.5rem 1.2rem;
+    border-radius: 6px;
+    cursor: pointer;
+    width: 100%;
+  }
+
+  .upload-btn:hover {
+    background-color: #0056b3;
+  }
+
+  .upload-info {
+    margin-top: 1rem;
+    font-size: 0.9rem;
+    background-color: #f1f1f1;
+    padding: 0.75rem;
+    border-radius: 8px;
+  }
+</style>

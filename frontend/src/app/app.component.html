@@ -1,0 +1,18 @@
+<nav>
+  <!-- When not logged in -->
+  <ng-container *ngIf="!isLoggedIn(); else loggedIn">
+    <a routerLink="/login" routerLinkActive="active">Login</a> |
+    <a routerLink="/signup" routerLinkActive="active">Signup</a>
+  </ng-container>
+
+  <!-- When logged in -->
+  <ng-template #loggedIn>
+    <span>Welcome, {{ session.getUser()?.name || 'User' }}!</span> |
+    <a routerLink="/employee" routerLinkActive="active">Employee</a> |
+    <a href="#" (click)="logout()">Logout</a>
+  </ng-template>
+</nav>
+
+<hr />
+
+<router-outlet></router-outlet>
